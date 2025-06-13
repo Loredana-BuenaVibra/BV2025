@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buena Vibra Group: Visión de Expansión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- 
+        Color Palette: Custom Brand Colors (#00FF6F, #353533, #DBD7D3, #00805B)
+        CONFIRMATION:
+        - NO Mermaid JS was used.
+        - NO SVG graphics were used. All diagrams are built with HTML/CSS and all charts are rendered on Canvas by Chart.js.
+    -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #353533; /* Dark Grey */
+            color: #DBD7D3; /* Light Grey/Off-white */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        .brand-gradient {
+            background: linear-gradient(90deg, #00805B, #00FF6F); /* Darker Green to Lighter Green */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .flowchart-node {
+            background-color: rgba(0, 128, 91, 0.2); /* #00805B with transparency */
+            border: 1px solid #00FF6F; /* Accent Green */
+        }
+        .flowchart-line {
+            position: relative;
+        }
+        .flowchart-line::after {
+            content: '';
+            position: absolute;
+            background-color: #00FF6F; /* Accent Green */
+            z-index: -1;
+        }
+        .flowchart-line.down::after {
+            width: 2px;
+            height: 2rem;
+            left: 50%;
+            top: 100%;
+            transform: translateX(-50%);
+        }
+        .card-bg {
+             background-color: #3F3F3F; /* Slightly lighter Dark Grey for cards */
+        }
+        /* Custom class for headings using the brand green */
+        .text-bvg-green {
+            color: #00FF6F; /* Direct Accent Green */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+        <header class="text-center mb-24">
+            <h1 class="text-4xl md:text-6xl font-black mb-4">La Evolución de <span class="brand-gradient">Buena Vibra</span></h1>
+            <p class="text-lg md:text-xl text-DBD7D3 max-w-3xl mx-auto">De líderes en producción de eventos a un ecosistema creativo 360°. Transformamos marcas a través de la innovación, tecnología y contenido integral.</p>
+        </header>
+
+        <section id="new-services" class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-DBD7D3">Nuevas Líneas de Negocio Estratégicas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="card-bg rounded-xl shadow-2xl p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold text-bvg-green mb-3">Consultoría Estratégica</h3>
+                    <p class="text-DBD7D3 mb-4 flex-grow">Ofrecemos nuestra experiencia para desarrollar estrategias de marketing experiencial, definir el "Brand Persona" y planificar campañas integradas que trascienden el evento puntual.</p>
+                    <div class="text-center mt-4">
+                        <span class="text-6xl text-DBD7D3">💡</span>
+                        <p class="font-semibold mt-2 text-DBD7D3">Posicionamiento como <br>Thought Leaders</p>
+                    </div>
+                </div>
+
+                <div class="card-bg rounded-xl shadow-2xl p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold text-bvg-green mb-3">Producción de Contenido Digital</h3>
+                    <p class="text-DBD7D3 mb-4 flex-grow">Expandimos nuestra capacidad de creación de contenido "always-on" (video, foto, copy) para redes sociales y campañas digitales, asegurando una narrativa constante y envolvente.</p>
+                    <div class="chart-container h-[250px] max-h-[300px]">
+                        <canvas id="contentChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card-bg rounded-xl shadow-2xl p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold text-bvg-green mb-3">Eventos Híbridos y Virtuales</h3>
+                    <p class="text-DBD7D3 mb-4 flex-grow">Diseñamos y gestionamos plataformas personalizadas para eventos virtuales, abriendo posibilidades de alcance global y accesibilidad sin las limitaciones geográficas.</p>
+                     <div class="text-center mt-4">
+                        <span class="text-6xl text-DBD7D3">🌐</span>
+                        <p class="font-semibold mt-2 text-DBD7D3">Alcance Global <br>y Accesibilidad</p>
+                    </div>
+                </div>
+
+                <div class="card-bg rounded-xl shadow-2xl p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold text-bvg-green mb-3">Agencia de Talento y Booking</h3>
+                    <p class="text-DBD7D3 mb-4 flex-grow">Formalizamos nuestra red de contactos para ofrecer servicios de booking y gestión de talento (artistas, influencers) para eventos y campañas, simplificando la operación del cliente.</p>
+                    <div class="chart-container h-[250px] max-h-[300px]">
+                        <canvas id="talentChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card-bg rounded-xl shadow-2xl p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold text-bvg-green mb-3">Tecnología Inmersiva (AR/VR)</h3>
+                    <p class="text-DBD7D3 mb-4 flex-grow">Invertimos en capacidades para crear experiencias interactivas y multisensoriales (Realidad Aumentada, Realidad Virtual) para posicionarnos a la vanguardia de la innovación.</p>
+                    <div class="chart-container h-[250px] max-h-[300px]">
+                        <canvas id="techChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card-bg rounded-xl shadow-2xl p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold text-bvg-green mb-3">Monetización de IP Propio</h3>
+                    <p class="text-DBD7D3 mb-4 flex-grow">Creamos nuestros propios eventos y festivales para generar nuevas fuentes de ingreso, reducir la dependencia de proyectos por encargo y construir un legado de marca.</p>
+                     <div class="text-center mt-4">
+                        <span class="text-6xl text-DBD7D3">🏆</span>
+                        <p class="font-semibold mt-2 text-DBD7D3">Construcción de Legado <br>y Nuevos Ingresos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="monetization" class="mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-DBD7D3">Modelos de Monetización Innovadores</h2>
+            <p class="text-lg text-DBD7D3 max-w-3xl mx-auto text-center mb-12">Diversificamos cómo generamos valor, creando relaciones más profundas y sostenibles con nuestros socios.</p>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-8">
+                     <div class="flowchart-node inline-block px-6 py-3 rounded-lg font-bold text-xl flowchart-line down text-DBD7D3">Nuevas Líneas de Negocio</div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="flowchart-node p-4 rounded-lg">
+                        <h4 class="font-bold text-bvg-green">Retainers</h4>
+                        <p class="text-sm text-DBD7D3">Servicios continuos como consultoría y gestión de redes.</p>
+                    </div>
+                    <div class="flowchart-node p-4 rounded-lg">
+                        <h4 class="font-bold text-bvg-green">Revenue Share</h4>
+                        <p class="text-sm text-DBD7D3">Alianzas estratégicas en proyectos y plataformas conjuntas.</p>
+                    </div>
+                    <div class="flowchart-node p-4 rounded-lg">
+                        <h4 class="font-bold text-bvg-green">Patrocinios</h4>
+                        <p class="text-sm text-DBD7D3">Acuerdos a largo plazo para múltiples proyectos y propiedades.</p>
+                    </div>
+                     <div class="flowchart-node p-4 rounded-lg">
+                        <h4 class="font-bold text-bvg-green">Licenciamiento</h4>
+                        <p class="text-sm text-DBD7D3">Uso de nuestra tecnología y formatos de eventos por terceros.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center border-t border-DBD7D3 pt-8 mt-16">
+            <p class="text-DBD7D3">&copy; 2025 Buena Vibra Group. Impulsando el futuro de las experiencias de marca.</p>
+        </footer>
+    </main>
+
+    <script>
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+
+        const chartColors = {
+            primaryGreen: 'rgba(0, 255, 111, 0.8)', /* #00FF6F */
+            secondaryGreen: 'rgba(0, 128, 91, 0.8)', /* #00805B */
+            mediumGreen: 'rgba(0, 255, 111, 0.6)', /* #00FF6F with less opacity */
+            lightGreen: 'rgba(0, 255, 111, 0.4)', /* #00FF6F with even less opacity */
+            darkGrey: '#353533',
+            cardGrey: '#3F3F3F',
+            lightText: '#DBD7D3'
+        };
+
+        const chartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: chartColors.lightText,
+                        font: {
+                            family: "'Poppins', sans-serif"
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: { color: chartColors.lightText },
+                    grid: { color: 'rgba(219, 215, 211, 0.1)' } /* Light grey grid lines */
+                },
+                x: {
+                    ticks: { color: chartColors.lightText },
+                    grid: { color: 'rgba(219, 215, 211, 0.1)' }
+                }
+            }
+        };
+
+        const wrapLabel = (str, maxWidth) => {
+            if (str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxWidth) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines.filter(line => line.length > 0);
+        };
+
+        const originalContentLabels = ['Video & Animación', 'Fotografía & Diseño', 'Copywriting & PR'];
+        const contentChartLabels = originalContentLabels.map(label => wrapLabel(label, 16));
+        new Chart(document.getElementById('contentChart'), {
+            type: 'bar',
+            data: {
+                labels: contentChartLabels,
+                datasets: [{
+                    label: 'Foco de Producción',
+                    data: [65, 85, 50],
+                    backgroundColor: [chartColors.primaryGreen, chartColors.secondaryGreen, chartColors.mediumGreen],
+                    borderColor: chartColors.lightText,
+                    borderWidth: 1
+                }]
+            },
+            options: { ...chartOptions, indexAxis: 'y' }
+        });
+
+        const originalTalentLabels = ['Artistas Musicales', 'Influencers Digitales', 'Creadores de Contenido'];
+        const talentChartLabels = originalTalentLabels.map(label => wrapLabel(label, 16));
+        new Chart(document.getElementById('talentChart'), {
+            type: 'polarArea',
+            data: {
+                labels: talentChartLabels,
+                datasets: [{
+                    label: 'Áreas de Booking',
+                    data: [70, 90, 80],
+                    backgroundColor: [chartColors.primaryGreen, chartColors.secondaryGreen, chartColors.mediumGreen]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { labels: { color: chartColors.lightText } },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                },
+                scales: { r: { ticks: { backdropColor: 'transparent', color: chartColors.lightText }, grid: { color: 'rgba(219, 215, 211, 0.2)' } } }
+            }
+        });
+
+        const techChartLabels = ['Realidad Aumentada (AR)', 'Realidad Virtual (VR)', 'Metaverso'];
+        new Chart(document.getElementById('techChart'), {
+            type: 'doughnut',
+            data: {
+                labels: techChartLabels.map(l => wrapLabel(l, 16)),
+                datasets: [{
+                    label: 'Enfoque Tecnológico',
+                    data: [55, 30, 15],
+                    backgroundColor: [chartColors.primaryGreen, chartColors.secondaryGreen, chartColors.mediumGreen],
+                    borderColor: chartColors.cardGrey,
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top', labels: { color: chartColors.lightText } },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
